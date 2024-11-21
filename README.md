@@ -153,4 +153,4 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue';
 <img src="p.png" alt="Login Screenshot" width="300"/>
 <img src="home.png" alt="Login Screenshot" width="300"/>
 <img src="profil.png" alt="Login Screenshot" width="300"/>
-# LabMobile9_Repo-Wianata-Barus_ShiftF
+
