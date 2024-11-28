@@ -154,3 +154,131 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue';
 <img src="home.png" alt="Login Screenshot" width="300"/>
 <img src="profil.png" alt="Login Screenshot" width="300"/>
 
+
+
+# Dokumentasi Aplikasi Todo dengan Ionic dan Firebase
+
+
+## Tampilan Awal Setelah Login
+
+[Tampilan Awal Setelah Login]
+
+Pada tampilan awal ini, pengguna dapat melihat daftar Todo yang sedang aktif (belum selesai). Setiap Todo menampilkan **judul**, **deskripsi**, dan **waktu terakhir diperbarui**. Fitur ini mencakup komponen berikut:
+- **IonList**: Menampilkan daftar Todo.
+- **IonItemSliding**: Menyediakan opsi untuk menghapus atau mengedit Todo dengan swipe.
+- **IonFab**: Tombol mengambang untuk menambah Todo baru.
+
+---
+
+## Tampilan Tambah Data
+
+![Tampilan Tambah Data] <img src="home1.png" alt="Login Screenshot" width="300"/> <img src="tambah.png" alt="Login Screenshot" width="300"/>
+
+Saat tombol tambah ditekan, sebuah modal muncul untuk memasukkan data baru. Modal ini menggunakan komponen **IonModal** dengan:
+- **IonInput** untuk memasukkan judul Todo.
+- **IonTextarea** untuk memasukkan deskripsi Todo.
+- Tombol "Add Todo" untuk menambahkan data baru ke Firestore.
+
+Kode terkait:
+```ts
+const handleSubmit = async (todo: Omit<Todo, 'id' | 'createdAt' | 'updatedAt' | 'status'>) => {
+  if (!todo.title) {
+    await showToast('Title is required', 'warning', warningOutline);
+    return;
+  }
+  try {
+    await firestoreService.addTodo(todo as Todo);
+    loadTodos();
+  } catch (error) {
+    await showToast('An error occurred', 'danger', closeCircle);
+  }
+};
+```
+
+---
+
+## Tampilan Edit Data
+
+![Tampilan Edit Data]<img src="edit.png" alt="Login Screenshot" width="300"/>
+<img src="afteredit.png" alt="Login Screenshot" width="300"/>
+
+Pengguna dapat mengedit Todo dengan memilih opsi "Edit" pada daftar Todo. Tampilan modal akan terbuka dengan data Todo yang sudah ada. Setelah data diperbarui, Todo akan di-update di Firestore.
+
+Kode terkait:
+```ts
+const handleEdit = async (editTodo: Todo) => {
+  editingId.value = editTodo.id!;
+  todo.value = {
+    title: editTodo.title,
+    description: editTodo.description,
+  }
+  isOpen.value = true;
+};
+```
+
+---
+
+## Tampilan Delete Data
+
+![Tampilan Delete Data] <img src="hapus.png" alt="Login Screenshot" width="300"/>
+
+Todo dapat dihapus dengan cara swipe ke kanan atau memilih opsi "Delete" pada **IonItemSliding**. Setelah dihapus, Todo akan dihapus dari Firestore dan daftar diperbarui secara otomatis.
+
+Kode terkait:
+```ts
+const handleDelete = async (deleteTodo: Todo) => {
+  try {
+    await firestoreService.deleteTodo(deleteTodo.id!);
+    loadTodos();
+  } catch (error) {
+    console.error('Failed to delete todo:', error);
+  }
+};
+```
+
+---
+
+## Tampilan Update Status
+
+![Tampilan Update Status]<img src="hapus.png" alt="Login Screenshot" width="300"/>
+
+Status Todo dapat diperbarui menjadi **selesai** atau **aktif** dengan memilih opsi "Mark as Completed" atau "Mark as Active". Status ini diupdate di Firestore, dan daftar diperbarui.
+
+Kode terkait:
+```ts
+const handleStatus = async (statusTodo: Todo) => {
+  try {
+    await firestoreService.updateStatus(statusTodo.id!, !statusTodo.status);
+    loadTodos();
+  } catch (error) {
+    console.error('Failed to update status:', error);
+  }
+};
+```
+
+---
+
+## Tampilan Complete Todo
+
+![Tampilan Complete Todo]<img src="status.png" alt="Login Screenshot" width="300"/>
+
+Todo yang sudah selesai akan ditampilkan di bagian "Completed". Pengguna dapat membuka bagian ini menggunakan **IonAccordionGroup**. Todo yang selesai tetap dapat dihapus atau diubah statusnya kembali menjadi aktif.
+
+Kode terkait:
+```html
+<ion-accordion-group>
+  <ion-accordion value="completed">
+    <ion-item slot="header" color="light">
+      <ion-label>Completed</ion-label>
+    </ion-item>
+    <ion-list slot="content">
+      <ion-item-sliding v-for="todo in completedTodos" :key="todo.id">
+        <!-- Item Todo yang sudah selesai -->
+      </ion-item-sliding>
+    </ion-list>
+  </ion-accordion>
+</ion-accordion-group>
+```
+
+---
+
