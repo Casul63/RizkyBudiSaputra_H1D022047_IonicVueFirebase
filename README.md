@@ -239,7 +239,6 @@ const handleDelete = async (deleteTodo: Todo) => {
 
 ## Tampilan Update Status
 
-<img src="hapus.png" alt="Login Screenshot" width="300"/>
 
 Status Todo dapat diperbarui menjadi **selesai** atau **aktif** dengan memilih opsi "Mark as Completed" atau "Mark as Active". Status ini diupdate di Firestore, dan daftar diperbarui.
 
