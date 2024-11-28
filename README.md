@@ -160,8 +160,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue';
 
 
 ## Tampilan Awal Setelah Login
-
-[Tampilan Awal Setelah Login]
+<img src="home1.png" alt="Login Screenshot" width="300"/> 
 
 Pada tampilan awal ini, pengguna dapat melihat daftar Todo yang sedang aktif (belum selesai). Setiap Todo menampilkan **judul**, **deskripsi**, dan **waktu terakhir diperbarui**. Fitur ini mencakup komponen berikut:
 - **IonList**: Menampilkan daftar Todo.
@@ -172,7 +171,7 @@ Pada tampilan awal ini, pengguna dapat melihat daftar Todo yang sedang aktif (be
 
 ## Tampilan Tambah Data
 
-![Tampilan Tambah Data] <img src="home1.png" alt="Login Screenshot" width="300"/> <img src="tambah.png" alt="Login Screenshot" width="300"/>
+<img src="tambah.png" alt="Login Screenshot" width="300"/>
 
 Saat tombol tambah ditekan, sebuah modal muncul untuk memasukkan data baru. Modal ini menggunakan komponen **IonModal** dengan:
 - **IonInput** untuk memasukkan judul Todo.
@@ -199,7 +198,7 @@ const handleSubmit = async (todo: Omit<Todo, 'id' | 'createdAt' | 'updatedAt' | 
 
 ## Tampilan Edit Data
 
-![Tampilan Edit Data]<img src="edit.png" alt="Login Screenshot" width="300"/>
+<img src="edit.png" alt="Login Screenshot" width="300"/>
 <img src="afteredit.png" alt="Login Screenshot" width="300"/>
 
 Pengguna dapat mengedit Todo dengan memilih opsi "Edit" pada daftar Todo. Tampilan modal akan terbuka dengan data Todo yang sudah ada. Setelah data diperbarui, Todo akan di-update di Firestore.
@@ -220,7 +219,7 @@ const handleEdit = async (editTodo: Todo) => {
 
 ## Tampilan Delete Data
 
-![Tampilan Delete Data] <img src="hapus.png" alt="Login Screenshot" width="300"/>
+<img src="hapus.png" alt="Login Screenshot" width="300"/>
 
 Todo dapat dihapus dengan cara swipe ke kanan atau memilih opsi "Delete" pada **IonItemSliding**. Setelah dihapus, Todo akan dihapus dari Firestore dan daftar diperbarui secara otomatis.
 
@@ -240,7 +239,7 @@ const handleDelete = async (deleteTodo: Todo) => {
 
 ## Tampilan Update Status
 
-![Tampilan Update Status]<img src="hapus.png" alt="Login Screenshot" width="300"/>
+<img src="hapus.png" alt="Login Screenshot" width="300"/>
 
 Status Todo dapat diperbarui menjadi **selesai** atau **aktif** dengan memilih opsi "Mark as Completed" atau "Mark as Active". Status ini diupdate di Firestore, dan daftar diperbarui.
 
@@ -260,7 +259,7 @@ const handleStatus = async (statusTodo: Todo) => {
 
 ## Tampilan Complete Todo
 
-![Tampilan Complete Todo]<img src="status.png" alt="Login Screenshot" width="300"/>
+<img src="status.png" alt="Login Screenshot" width="300"/>
 
 Todo yang sudah selesai akan ditampilkan di bagian "Completed". Pengguna dapat membuka bagian ini menggunakan **IonAccordionGroup**. Todo yang selesai tetap dapat dihapus atau diubah statusnya kembali menjadi aktif.
 
