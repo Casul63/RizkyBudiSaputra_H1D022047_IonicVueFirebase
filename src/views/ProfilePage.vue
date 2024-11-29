@@ -16,7 +16,12 @@
             <!-- Avatar -->
             <div id="avatar-container">
                 <ion-avatar>
-                    <img alt="Avatar" :src="userPhoto" @error="handleImageError" />
+                    <img 
+                        alt="Avatar" 
+                        :src="userPhoto" 
+                        @error="handleImageError"
+                        @load="() => console.log('Image loaded successfully', userPhoto)"
+                    />
                 </ion-avatar>
             </div>
 

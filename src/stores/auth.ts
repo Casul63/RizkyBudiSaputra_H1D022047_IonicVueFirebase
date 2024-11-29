@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
     const loginWithGoogle = async () => {
         try {
             await GoogleAuth.initialize({
-                clientId: '784946743380-193r00me346h542n5uuvqnplk8lp8rkr.apps.googleusercontent.com',
+                clientId: '785879359719-hno0jjnkmkgkuq4eig09l9es5bb5pdsd.apps.googleusercontent.com',
                 scopes: ['profile', 'email'],
                 grantOfflineAccess: true,
             });
@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
             router.push("/home");
         } catch (error) {
             console.error("Google sign-in error:", error);
-
+            
             const alert = await alertController.create({
                 header: 'Login Gagal!',
                 message: 'Terjadi kesalahan saat login dengan Google. Coba lagi.',

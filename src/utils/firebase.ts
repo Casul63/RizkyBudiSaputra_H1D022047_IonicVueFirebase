@@ -1,17 +1,23 @@
+// src/utils/firebase.ts
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCJ16XY6VRwk__paMzwNZPBYh1ADa2kdkI",
-    authDomain: "vue-firebase-5d5c4.firebaseapp.com",
-    projectId: "vue-firebase-5d5c4",
-    storageBucket: "vue-firebase-5d5c4.firebasestorage.app",
-    messagingSenderId: "784946743380",
-    appId: "1:784946743380:web:35b2ba13d05b49d73f45c1"
+    apiKey: "AIzaSyBCmmef1Eq0QC8XiD-pAaecWwTaqS9ihBA",
+    authDomain: "vue-firebase-7a8e0.firebaseapp.com",
+    projectId: "vue-firebase-7a8e0",
+    storageBucket: "vue-firebase-7a8e0.firebasestorage.app",
+    messagingSenderId: "785879359719",
+    appId: "1:785879359719:web:690515187a4fc5ca7d4242"
 };
 
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
 const googleProvider = new GoogleAuthProvider();
+const db = getFirestore(firebase);
+export { auth, googleProvider, db };
 
-export { auth, googleProvider };
+
+
