@@ -5,12 +5,13 @@ import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBCmmef1Eq0QC8XiD-pAaecWwTaqS9ihBA",
-    authDomain: "vue-firebase-7a8e0.firebaseapp.com",
-    projectId: "vue-firebase-7a8e0",
-    storageBucket: "vue-firebase-7a8e0.firebasestorage.app",
-    messagingSenderId: "785879359719",
-    appId: "1:785879359719:web:690515187a4fc5ca7d4242"
+    apiKey: "AIzaSyCJ16XY6VRwk__paMzwNZPBYh1ADa2kdkI",
+    authDomain: "vue-firebase-5d5c4.firebaseapp.com",
+    // databaseURL: "https://vue-firebase-5d5c4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "vue-firebase-5d5c4",
+    storageBucket: "vue-firebase-5d5c4.firebasestorage.app",
+    messagingSenderId: "784946743380",
+    appId: "1:784946743380:web:35b2ba13d05b49d73f45c1"
 };
 
 const firebase = initializeApp(firebaseConfig);
